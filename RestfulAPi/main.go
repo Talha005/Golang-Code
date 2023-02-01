@@ -1,13 +1,12 @@
 package main
 
-import "fmt"
-
 //Model for course - file
 
 type Course struct {
-	CourseId    string `json:"courseid"`
-	CourseName  string `json:"coursename"`
-	CoursePrice int    `json:"price"`
+	CourseId    string  `json:"courseid"`
+	CourseName  string  `json:"coursename"`
+	CoursePrice int     `json:"price"`
+	Author      *Author `json:"author"`
 }
 
 type Author struct {
@@ -15,7 +14,13 @@ type Author struct {
 	Website  string `json:"website"`
 }
 
+//fake DB
+var courses []Course
+
+//middleware, helper - file
+func (c *Course) IsEmpty() bool {
+	return c.CourseId == "" && c.CourseName == ""
+}
 func main() {
 
-	fmt.Println("Hello")
 }
